@@ -24,8 +24,8 @@ public class RegInformationInitializer extends AbstractInitializer {
         userFullName.requestFullNameInformation();
         regInformation.setComment(requestComments(communicator));
         regInformation.setUserGroup(requestUserGroup(communicator));
-        regInformation.addUserAddress(userAddressInit.requestUserAddress());
         userContactsInitializer.requestUserContacts();
+        regInformation.addUserAddress(userAddressInit.requestUserAddress());
     }
 
     private UserGroup requestUserGroup(UserCommunicator communicator) {
