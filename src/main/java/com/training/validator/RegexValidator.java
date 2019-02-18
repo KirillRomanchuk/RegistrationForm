@@ -1,6 +1,5 @@
-package com.training.controller;
+package com.training.validator;
 
-// TODO (Eugene): 2/18/2019 move to package com.training.validator
 public class RegexValidator implements Validator<String> {
 
     private final String regex;

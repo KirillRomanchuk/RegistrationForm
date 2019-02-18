@@ -7,12 +7,11 @@ import java.util.Scanner;
 public class UserCommunicator {
 
     private Scanner scan;
-    // TODO (Eugene): 2/18/2019 rename to messageBundle
-    private ResourceBundle messageText;
+    private ResourceBundle messageBundle;
 
     public UserCommunicator(InputStream text) {
         this.scan = new Scanner(text);
-        this.messageText = ResourceBundle.getBundle("MessageTextBundle");
+        this.messageBundle = ResourceBundle.getBundle("MessageTextBundle");
     }
 
     private void viewMessage(String text) {
@@ -24,16 +23,16 @@ public class UserCommunicator {
     }
 
     public void viewErrorMessage(MessageType messageType) {
-        viewMessage(messageText.getString(messageType.name()));
+        viewMessage(messageBundle.getString(messageType.name()));
     }
 
     public String requestTextValue(MessageType messageType) {
-        viewMessage(messageText.getString(messageType.name()));
+        viewMessage(messageBundle.getString(messageType.name()));
         return scan.nextLine();
     }
 
     public Integer requestNumberValue(MessageType messageType) {
-        viewMessage(messageText.getString(messageType.name()));
+        viewMessage(messageBundle.getString(messageType.name()));
         return scan.nextInt();
     }
 
