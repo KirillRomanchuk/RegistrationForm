@@ -8,13 +8,13 @@ import com.training.validator.EnumValidator;
 
 public class RegInformationInitializer extends AbstractInitializer {
     private UserCommunicator communicator;
-    private UserFullNameInitializer userFullName;
+    private UserNameInitializer userFullName;
     private UserAddressInitializer userAddressInit;
     private UserContactsInitializer userContactsInitializer;
 
     public RegInformationInitializer(UserCommunicator communicator) {
         this.communicator = communicator;
-        this.userFullName = new UserFullNameInitializer();
+        this.userFullName = new UserNameInitializer();
         this.userAddressInit = new UserAddressInitializer();
         this.userContactsInitializer = new UserContactsInitializer();
     }

@@ -7,10 +7,10 @@ import com.training.validator.Validator;
 
 import java.util.ResourceBundle;
 
-public class UserFullNameInitializer extends AbstractInitializer {
+public class UserNameInitializer extends AbstractInitializer {
     private Validator<String> textValidator;
 
-    public UserFullNameInitializer() {
+    public UserNameInitializer() {
         ResourceBundle regexBundle = ResourceBundle.getBundle("RegexBundle");
         this.textValidator = new RegexValidator(regexBundle.getString("onlyText"));
     }
