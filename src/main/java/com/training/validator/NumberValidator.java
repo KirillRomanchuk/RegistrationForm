@@ -1,4 +1,4 @@
-package com.training.controller;
+package com.training.validator;
 
 public class NumberValidator implements Validator<Integer> {
     @Override

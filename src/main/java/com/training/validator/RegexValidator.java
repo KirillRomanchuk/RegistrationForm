@@ -1,4 +1,4 @@
-package com.training.controller;
+package com.training.validator;
 
 public class RegexValidator implements Validator<String> {
 

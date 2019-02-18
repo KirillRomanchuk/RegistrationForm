@@ -1,4 +1,4 @@
-package com.training.controller;
+package com.training.validator;
 
 import java.util.Arrays;
 
