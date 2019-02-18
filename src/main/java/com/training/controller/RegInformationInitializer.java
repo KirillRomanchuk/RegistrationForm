@@ -1,51 +1,42 @@
 package com.training.controller;
 
-import com.training.communication.MessageType;
 import com.training.communication.UserCommunicator;
 import com.training.model.RegInformation;
-import com.training.model.UserGroup;
-import com.training.validator.EnumValidator;
 
-public class RegInformationInitializer extends AbstractInitializer {
-    private UserCommunicator communicator;
-    private UserNameInitializer userFullName;
-    private UserAddressInitializer userAddressInit;
-    private UserContactsInitializer userContactsInitializer;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
-    public RegInformationInitializer(UserCommunicator communicator) {
-        this.communicator = communicator;
-        this.userFullName = new UserNameInitializer();
-        this.userAddressInit = new UserAddressInitializer();
-        this.userContactsInitializer = new UserContactsInitializer();
+public class RegInformationInitializer extends AbstractInitializer<RegInformation> {
+    private List<AbstractInitializer<RegInformation>> initializers;
+    /*private AbstractInitializer<RegInformation> fullNameInitializer;
+    private AbstractInitializer<RegInformation> addressInitializer;
+    private AbstractInitializer<RegInformation> contactsInitializer;
+    private AbstractInitializer<RegInformation> groupInitializer;
+    private AbstractInitializer<RegInformation> commentInitializer;*/
+
+    public RegInformationInitializer(UserCommunicator communicator, ResourceBundle regexBundle) {
+        super(communicator);
+        this.initializers = Arrays.asList();
+        initializers.add(new UserNameInitializer(communicator, regexBundle));
+        initializers.add(new UserGroupInitializer(communicator));
+        initializers.add(new UserCommentInitializer(communicator));
+        initializers.add(new UserAddressInitializer(communicator, regexBundle));
+        initializers.add(new UserContactsInitializer(communicator, regexBundle));
+       /* this.fullNameInitializer = new UserNameInitializer(communicator, regexBundle);
+        this.addressInitializer = new UserAddressInitializer(communicator, regexBundle);
+        this.contactsInitializer = new UserContactsInitializer(communicator, regexBundle);
+        this.groupInitializer = new UserGroupInitializer(communicator);
+        this.commentInitializer = new UserCommentInitializer(communicator);*/
     }
 
-    public void startUserRegistration() {
-        RegInformation regInformation = new RegInformation();
-        userFullName.requestFullNameInformation(regInformation);
-        regInformation.setComment(requestComments(communicator));
-        regInformation.setUserGroup(requestUserGroup(communicator));
-        userContactsInitializer.requestUserContacts(regInformation);
-        regInformation.addUserAddress(userAddressInit.requestUserAddress());
-    }
-
-    private UserGroup requestUserGroup(UserCommunicator communicator) {
-        EnumValidator enumValidator = new EnumValidator<>(UserGroup.values());
-        UserGroup returnValue = null;
-        boolean isEmpty = false;
-        while (!isEmpty) {
-            String inputValue = communicator.requestTextValue(MessageType.REQUEST_USER_GROUP);
-            if (enumValidator.checkValue(inputValue)) {
-                returnValue = UserGroup.valueOf(inputValue.toUpperCase());
-                isEmpty = true;
-            } else {
-                communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
-                communicator.viewNoTypeMessage(String.format("Available groups: [%s]", UserGroup.values()));
-            }
-        }
-        return returnValue;
-    }
-
-    private String requestComments(UserCommunicator communicator) {
-        return communicator.requestTextValue(MessageType.REQUEST_COMMENT);
+    @Override
+    public void initializer(RegInformation regInformation) {
+        initializers.forEach(initializer ->initializer(regInformation));
+        /*fullNameInitializer.initializer(regInformation);
+        addressInitializer.initializer(regInformation);
+        commentInitializer.initializer(regInformation);
+        groupInitializer.initializer(regInformation);
+        contactsInitializer.initializer(regInformation);*/
     }
 }
