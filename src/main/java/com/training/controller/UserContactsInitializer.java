@@ -16,10 +16,12 @@ public class UserContactsInitializer extends AbstractInitializer {
 
     public UserContactsInitializer(RegInformation regInformation, UserCommunicator communicator) {
         this.regexBundle = ResourceBundle.getBundle("RegexBundle");
+        // TODO (Eugene): 2/18/2019 rename 'someText' key to something more meaningful 
         this.textValidator = new RegexValidator(regexBundle.getString("someText"));
         this.phoneValidator = new RegexValidator(regexBundle.getString("phoneNumber"));
         this.emailValidator = new RegexValidator(regexBundle.getString("email"));
         this.communicator = communicator;
+        // TODO (Eugene): 2/18/2019 remove this field and pass it to 'requestUserContacts' method 
         this.regInformation = regInformation;
     }
 

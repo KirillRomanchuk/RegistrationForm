@@ -34,6 +34,7 @@ public class UserAddressInitializer extends AbstractInitializer {
 
     private String createFullAddress() {
         return String.format("%s, %s №%s, №%s, %s", userAddress.getCity()
+                // TODO (Eugene): 2/18/2019 move comma after statement
                 , userAddress.getStreet()
                 , userAddress.getHouseNumber()
                 , userAddress.getFlatNumber()

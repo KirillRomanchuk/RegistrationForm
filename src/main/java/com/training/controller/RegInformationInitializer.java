@@ -13,8 +13,11 @@ public class RegInformationInitializer extends AbstractInitializer {
     private UserContactsInitializer userContactsInitializer;
 
     public RegInformationInitializer() {
+        // TODO (Eugene): 2/18/2019 better to pass 'communicator' as constructor argument
         this.communicator = new UserCommunicator(System.in);
+        // TODO (Eugene): 2/18/2019 you don't need this as field. Just create this in 'startUserRegistration' method
         this.regInformation = new RegInformation();
+        // TODO (Eugene): 2/18/2019 This is not userFullName. Just initializer. Rename it
         this.userFullName = new UserFullNameInitializer(regInformation, communicator);
         this.userAddressInit = new UserAddressInitializer(communicator);
         this.userContactsInitializer = new UserContactsInitializer(regInformation, communicator);
@@ -31,6 +34,7 @@ public class RegInformationInitializer extends AbstractInitializer {
     private UserGroup requestUserGroup(UserCommunicator communicator) {
         EnumValidator enumValidator = new EnumValidator<>(UserGroup.values());
         UserGroup returnValue = null;
+        // TODO (Eugene): 2/18/2019 move this variable inside while loop
         String inputValue;
         boolean isEmpty = false;
         while (!isEmpty) {
@@ -40,6 +44,7 @@ public class RegInformationInitializer extends AbstractInitializer {
                 isEmpty = true;
             } else {
                 communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
+                // TODO (Eugene): 2/18/2019 '.toString()' is called implicitly anyways, remove it
                 communicator.viewNoTypeMessage(String.format("Available groups: [%s]", UserGroup.values().toString()));
             }
         }

@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class UserCommunicator {
 
     private Scanner scan;
+    // TODO (Eugene): 2/18/2019 rename to messageBundle
     private ResourceBundle messageText;
 
     public UserCommunicator(InputStream text) {
