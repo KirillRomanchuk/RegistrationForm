@@ -34,7 +34,7 @@ public class UserCommunicator {
     public Integer requestNumberValue(MessageType messageType) {
         viewMessage(messageBundle.getString(messageType.name()));
         while (!scanner.hasNextInt()) {
-            viewMessage(messageBundle.getString(MessageType.WRONG_ENTER_NUMBER.name()));
+            viewErrorMessage(MessageType.WRONG_ENTER_NUMBER);
             scanner.next();
         }
         return Integer.parseInt(scanner.nextLine());
