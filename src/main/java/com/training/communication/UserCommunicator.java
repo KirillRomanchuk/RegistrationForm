@@ -14,8 +14,8 @@ public class UserCommunicator {
         this.messageBundle = ResourceBundle.getBundle("MessageTextBundle");
     }
 
-    public void viewMessage(MessageType messageType, String extraValue) {
-        System.out.println(String.format(messageBundle.getString(messageType.name()), extraValue));
+    public void viewMessage(MessageType messageType, Object... args) {
+        System.out.println(String.format(messageBundle.getString(messageType.name()), args));
     }
 
     public String requestTextValue(MessageType messageType) {
