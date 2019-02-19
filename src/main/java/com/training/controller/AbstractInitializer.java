@@ -25,10 +25,10 @@ public abstract class AbstractInitializer<T> {
         return returnValue;
     }
 
-    protected Integer requestInt(MessageType requestKey, MessageType errorMessageType, Validator<Integer> intValidator) {
+    protected Integer requestInt(MessageType requestKey, Validator<Integer> intValidator) {
         Integer returnValue = 0;
         while (returnValue == 0) {
-            returnValue = communicator.requestNumberValue(requestKey, errorMessageType);
+            returnValue = communicator.requestNumberValue(requestKey);
             if (!intValidator.isValid(returnValue)) {
                 communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
                 returnValue = 0;

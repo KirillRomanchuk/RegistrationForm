@@ -31,10 +31,10 @@ public class UserCommunicator {
         return scanner.nextLine();
     }
 
-    public Integer requestNumberValue(MessageType messageType, MessageType errorMessageType) {
+    public Integer requestNumberValue(MessageType messageType) {
         viewMessage(messageBundle.getString(messageType.name()));
         while (!scanner.hasNextInt()) {
-            viewMessage(errorMessageType.name());
+            viewMessage(messageBundle.getString(MessageType.WRONG_ENTER_NUMBER.name()));
             scanner.next();
         }
         return Integer.parseInt(scanner.nextLine());
