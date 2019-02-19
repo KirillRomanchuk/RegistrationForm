@@ -11,7 +11,7 @@ public class EnumValidator<T extends Enum> implements Validator<String> {
     }
 
     @Override
-    public boolean checkValue(String value) {
+    public boolean isValid(String value) {
         return Arrays.stream(values).anyMatch(g -> g.name().toLowerCase().equals(value.toLowerCase()));
     }
 }

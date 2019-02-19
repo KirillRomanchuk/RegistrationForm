@@ -1,6 +1,7 @@
 package com.training.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RegInformation {
@@ -18,8 +19,8 @@ public class RegInformation {
     private String email;
     private String skype;
     private List<UserAddress> userAddress = new ArrayList<>();
-    private String entryDate;
-    private String lastChangeDate;
+    private Date entryDate;
+    private Date lastChangeDate;
 
     public String getLastName() {
         return lastName;
@@ -125,19 +126,19 @@ public class RegInformation {
         this.userAddress.add(userAddress);
     }
 
-    public String getEntryDate() {
+    public Date getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(String entryDate) {
+    public void setEntryDate(Date entryDate) {
         this.entryDate = entryDate;
     }
 
-    public String getLastChangeDate() {
+    public Date getLastChangeDate() {
         return lastChangeDate;
     }
 
-    public void setLastChangeDate(String lastChangeDate) {
+    public void setLastChangeDate(Date lastChangeDate) {
         this.lastChangeDate = lastChangeDate;
     }
 }
