@@ -14,27 +14,19 @@ public class UserCommunicator {
         this.messageBundle = ResourceBundle.getBundle("MessageTextBundle");
     }
 
-    private void viewMessage(String text) {
-        System.out.println(text);
-    }
-
-    public void viewNoTypeMessage(String text) {
-        viewMessage(text);
-    }
-
-    public void viewErrorMessage(MessageType messageType) {
-        viewMessage(messageBundle.getString(messageType.name()));
+    public void viewMessage(MessageType messageType, String extraValue) {
+        System.out.println(String.format(messageBundle.getString(messageType.name()), extraValue));
     }
 
     public String requestTextValue(MessageType messageType) {
-        viewMessage(messageBundle.getString(messageType.name()));
+        viewMessage(messageType, "");
         return scanner.nextLine();
     }
 
     public Integer requestNumberValue(MessageType messageType) {
-        viewMessage(messageBundle.getString(messageType.name()));
+        viewMessage(messageType, "");
         while (!scanner.hasNextInt()) {
-            viewErrorMessage(MessageType.WRONG_ENTER_NUMBER);
+            viewMessage(MessageType.WRONG_ENTER_NUMBER, "");
             scanner.next();
         }
         return Integer.parseInt(scanner.nextLine());
