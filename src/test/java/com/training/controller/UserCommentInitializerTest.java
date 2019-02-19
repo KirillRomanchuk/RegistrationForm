@@ -1,5 +1,6 @@
 package com.training.controller;
 
+import com.training.communication.MessageType;
 import com.training.communication.UserCommunicator;
 import com.training.model.RegInformation;
 import org.junit.Before;
@@ -11,8 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserCommentInitializerTest {
@@ -24,8 +24,11 @@ public class UserCommentInitializerTest {
 
     @Test
     public void initialize() {
+        String value = "testValue";
+        when(communicator.requestTextValue(MessageType.REQUEST_COMMENT)).thenReturn(value);
         RegInformation regInformation = mock(RegInformation.class);
+
         initializer.initialize(regInformation);
-        verify(regInformation).setComment(any());
+        verify(regInformation).setComment(value);
     }
 }
