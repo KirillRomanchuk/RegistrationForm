@@ -2,7 +2,6 @@ package com.training.controller;
 
 import com.training.communication.MessageType;
 import com.training.communication.UserCommunicator;
-import com.training.model.UserGroup;
 import com.training.validator.Validator;
 
 import java.util.Arrays;
