@@ -16,16 +16,6 @@ public class UserGroupInitializer extends AbstractInitializer<RegInformation> {
 
     @Override
     public void initialize(RegInformation regInformation) {
-        UserGroup returnValue = null;
-        while (returnValue == null) {
-            String inputValue = communicator.requestTextValue(MessageType.REQUEST_USER_GROUP);
-            if (enumValidator.isValid(inputValue)) {
-                returnValue = UserGroup.valueOf(inputValue.toUpperCase());
-            } else {
-                communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
-                communicator.viewNoTypeMessage(String.format("Available groups: [%s]", UserGroup.values()));
-            }
-        }
-        regInformation.setUserGroup(returnValue);
+        regInformation.setUserGroup(requestEnum(MessageType.REQUEST_USER_GROUP, enumValidator, UserGroup.class, UserGroup.values()));
     }
 }

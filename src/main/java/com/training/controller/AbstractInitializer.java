@@ -2,7 +2,10 @@ package com.training.controller;
 
 import com.training.communication.MessageType;
 import com.training.communication.UserCommunicator;
+import com.training.model.UserGroup;
 import com.training.validator.Validator;
+
+import java.util.Arrays;
 
 public abstract class AbstractInitializer<T> {
     protected final UserCommunicator communicator;
@@ -32,6 +35,21 @@ public abstract class AbstractInitializer<T> {
                 returnValue = 0;
             }
         }
+        return returnValue;
+    }
+
+    protected <V extends Enum<V>> V requestEnum(MessageType requestKey, Validator<String> enumValidator, Class<V> enumClass, V[] enumData) {
+        V returnValue = null;
+        while (returnValue == null) {
+            String inputValue = communicator.requestTextValue(requestKey);
+            if (enumValidator.isValid(inputValue)) {
+                returnValue = V.valueOf(enumClass, inputValue.toUpperCase());
+            } else {
+                communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
+                communicator.viewNoTypeMessage(String.format("Available values: %s", Arrays.toString(enumData)));
+            }
+        }
+
         return returnValue;
     }
 
