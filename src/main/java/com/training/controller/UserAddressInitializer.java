@@ -27,7 +27,7 @@ public class UserAddressInitializer extends AbstractInitializer<RegInformation> 
         userAddress.setStreet(requestString(MessageType.REQUEST_STREET, textValidator));
         userAddress.setHouseNumber(requestString(MessageType.REQUEST_HOUSE_NUM, textValidator));
         userAddress.setFlatNumber(requestString(MessageType.REQUEST_FLAT, textValidator));
-        userAddress.setIndex(requestInt(MessageType.REQUEST_INDEX, intValidator));
+        userAddress.setIndex(requestInt(MessageType.REQUEST_INDEX, MessageType.WRONG_ENTER_NUMBER,intValidator));
         userAddress.setFullAddress(createFullAddress(userAddress));
         regInformation.addUserAddress(userAddress);
     }

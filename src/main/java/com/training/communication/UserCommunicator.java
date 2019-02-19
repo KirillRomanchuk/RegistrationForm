@@ -31,18 +31,12 @@ public class UserCommunicator {
         return scanner.nextLine();
     }
 
-    public Integer requestNumberValue(MessageType messageType) {
+    public Integer requestNumberValue(MessageType messageType, MessageType errorMessageType) {
         viewMessage(messageBundle.getString(messageType.name()));
-        int value = 0;
         while (!scanner.hasNextInt()) {
-            try {
-                value = scanner.nextInt();
-            } catch (Exception e) {
-                viewMessage("This is not number. Please, enter the number:");
-                scanner.next();
-            }
+            viewMessage(errorMessageType.name());
+            scanner.next();
         }
-        scanner.next();
-        return value;
+        return Integer.parseInt(scanner.nextLine());
     }
 }
