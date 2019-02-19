@@ -21,7 +21,7 @@ public class UserContactsInitializer extends AbstractInitializer<RegInformation>
     }
 
     @Override
-    public void initializer(RegInformation regInformation) {
+    public void initialize(RegInformation regInformation) {
         regInformation.setHomePhone(requestString(MessageType.REQUEST_HOME_PHONE, phoneValidator));
         regInformation.setMobilePhoneFirst(requestString(MessageType.REQUEST_MOB_PHONE, phoneValidator));
         regInformation.setMobilePhoneSecond(requestString(MessageType.REQUEST_MOB_PHONE_SECOND, phoneValidator));

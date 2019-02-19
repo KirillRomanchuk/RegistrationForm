@@ -17,7 +17,7 @@ public class UserNameInitializer extends AbstractInitializer <RegInformation>{
     }
 
     @Override
-    public void initializer(RegInformation regInformation) {
+    public void initialize(RegInformation regInformation) {
         regInformation.setLastName(requestString(MessageType.REQUEST_LAST_NAME, textValidator));
         regInformation.setFirstName(requestString(MessageType.REQUEST_FIRST_NAME, textValidator));
         regInformation.setMiddleName(requestString(MessageType.REQUEST_MIDDLE_NAME, textValidator));

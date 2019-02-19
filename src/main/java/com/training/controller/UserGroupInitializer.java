@@ -15,11 +15,11 @@ public class UserGroupInitializer extends AbstractInitializer<RegInformation> {
     }
 
     @Override
-    public void initializer(RegInformation regInformation) {
+    public void initialize(RegInformation regInformation) {
         UserGroup returnValue = null;
         while (returnValue == null) {
             String inputValue = communicator.requestTextValue(MessageType.REQUEST_USER_GROUP);
-            if (enumValidator.checkValue(inputValue)) {
+            if (enumValidator.isValid(inputValue)) {
                 returnValue = UserGroup.valueOf(inputValue.toUpperCase());
             } else {
                 communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);

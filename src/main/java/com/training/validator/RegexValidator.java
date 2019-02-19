@@ -9,7 +9,7 @@ public class RegexValidator implements Validator<String> {
     }
 
     @Override
-    public boolean checkValue(String value) {
+    public boolean isValid(String value) {
         return value.matches(regex);
     }
 }

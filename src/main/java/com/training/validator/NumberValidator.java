@@ -2,7 +2,7 @@ package com.training.validator;
 
 public class NumberValidator implements Validator<Integer> {
     @Override
-    public boolean checkValue(Integer value) {
+    public boolean isValid(Integer value) {
         return value > 0;
     }
 }

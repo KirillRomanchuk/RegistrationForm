@@ -11,7 +11,7 @@ public class UserCommentInitializer extends AbstractInitializer <RegInformation>
     }
 
     @Override
-    public void initializer(RegInformation regInformation) {
+    public void initialize(RegInformation regInformation) {
         regInformation.setComment(communicator.requestTextValue(MessageType.REQUEST_COMMENT));
     }
 }

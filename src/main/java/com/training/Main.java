@@ -12,6 +12,6 @@ public class Main {
         ResourceBundle regexBundle = ResourceBundle.getBundle("RegexBundle");
         RegInformation regInformation = new RegInformation();
         RegInformationInitializer regInformationInitializer = new RegInformationInitializer(communicator, regexBundle);
-        regInformationInitializer.initializer(regInformation);
+        regInformationInitializer.initialize(regInformation);
     }
 }

@@ -21,7 +21,7 @@ public class UserAddressInitializer extends AbstractInitializer<RegInformation> 
     }
 
     @Override
-    public void initializer(RegInformation regInformation) {
+    public void initialize(RegInformation regInformation) {
         UserAddress userAddress = new UserAddress();
         userAddress.setCity(requestString(MessageType.REQUEST_CITY, textValidator));
         userAddress.setStreet(requestString(MessageType.REQUEST_STREET, textValidator));

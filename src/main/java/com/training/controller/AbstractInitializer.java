@@ -15,7 +15,7 @@ public abstract class AbstractInitializer<T> {
         String returnValue = "";
         while (returnValue.isEmpty()) {
             returnValue = communicator.requestTextValue(requestKey);
-            if (!textValidator.checkValue(returnValue)) {
+            if (!textValidator.isValid(returnValue)) {
                 communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
                 returnValue = "";
             }
@@ -27,7 +27,7 @@ public abstract class AbstractInitializer<T> {
         Integer returnValue = 0;
         while (returnValue == 0) {
             returnValue = communicator.requestNumberValue(requestKey);
-            if (!intValidator.checkValue(returnValue)) {
+            if (!intValidator.isValid(returnValue)) {
                 communicator.viewErrorMessage(MessageType.WRONG_INPUT_VALUE);
                 returnValue = 0;
             }
@@ -35,5 +35,5 @@ public abstract class AbstractInitializer<T> {
         return returnValue;
     }
 
-    public abstract void initializer(T data);
+    public abstract void initialize(T data);
 }
