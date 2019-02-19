@@ -16,6 +16,6 @@ public class UserGroupInitializer extends AbstractInitializer<RegInformation> {
 
     @Override
     public void initialize(RegInformation regInformation) {
-        regInformation.setUserGroup(requestEnum(MessageType.REQUEST_USER_GROUP, enumValidator, UserGroup.class, UserGroup.values()));
+        regInformation.setUserGroup(requestEnum(MessageType.REQUEST_USER_GROUP, enumValidator, UserGroup.values()));
     }
 }

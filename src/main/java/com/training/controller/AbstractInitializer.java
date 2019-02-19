@@ -37,7 +37,8 @@ public abstract class AbstractInitializer<T> {
         return returnValue;
     }
 
-    protected <V extends Enum<V>> V requestEnum(MessageType requestKey, Validator<String> enumValidator, Class<V> enumClass, V[] enumData) {
+    protected <V extends Enum<V>> V requestEnum(MessageType requestKey, Validator<String> enumValidator, V[] enumData) {
+        Class<V> enumClass = enumData[0].getDeclaringClass();
         V returnValue = null;
         while (returnValue == null) {
             String inputValue = communicator.requestTextValue(requestKey);

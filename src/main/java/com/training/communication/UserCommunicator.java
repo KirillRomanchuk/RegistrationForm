@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class UserCommunicator {
 
-    private Scanner scan;
+    private Scanner scanner;
     private ResourceBundle messageBundle;
 
     public UserCommunicator(InputStream text) {
-        this.scan = new Scanner(text);
+        this.scanner = new Scanner(text);
         this.messageBundle = ResourceBundle.getBundle("MessageTextBundle");
     }
 
@@ -28,13 +28,21 @@ public class UserCommunicator {
 
     public String requestTextValue(MessageType messageType) {
         viewMessage(messageBundle.getString(messageType.name()));
-        return scan.nextLine();
+        return scanner.nextLine();
     }
 
     public Integer requestNumberValue(MessageType messageType) {
         viewMessage(messageBundle.getString(messageType.name()));
-        return scan.nextInt();
+        int value = 0;
+        while (!scanner.hasNextInt()) {
+            try {
+                value = scanner.nextInt();
+            } catch (Exception e) {
+                viewMessage("This is not number. Please, enter the number:");
+                scanner.next();
+            }
+        }
+        scanner.next();
+        return value;
     }
-
-
 }
