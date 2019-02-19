@@ -19,14 +19,14 @@ public class UserCommunicator {
     }
 
     public String requestTextValue(MessageType messageType) {
-        viewMessage(messageType, "");
+        viewMessage(messageType);
         return scanner.nextLine();
     }
 
     public Integer requestNumberValue(MessageType messageType) {
-        viewMessage(messageType, "");
+        viewMessage(messageType);
         while (!scanner.hasNextInt()) {
-            viewMessage(MessageType.WRONG_ENTER_NUMBER, "");
+            viewMessage(MessageType.WRONG_ENTER_NUMBER);
             scanner.next();
         }
         return Integer.parseInt(scanner.nextLine());

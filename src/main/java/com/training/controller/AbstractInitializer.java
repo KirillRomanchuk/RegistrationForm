@@ -18,7 +18,7 @@ public abstract class AbstractInitializer<T> {
         while (returnValue.isEmpty()) {
             returnValue = communicator.requestTextValue(requestKey);
             if (!textValidator.isValid(returnValue)) {
-                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE, "");
+                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE);
                 returnValue = "";
             }
         }
@@ -30,7 +30,7 @@ public abstract class AbstractInitializer<T> {
         while (returnValue == 0) {
             returnValue = communicator.requestNumberValue(requestKey);
             if (!intValidator.isValid(returnValue)) {
-                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE,"");
+                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE);
                 returnValue = 0;
             }
         }
@@ -45,7 +45,7 @@ public abstract class AbstractInitializer<T> {
             if (enumValidator.isValid(inputValue)) {
                 returnValue = V.valueOf(enumClass, inputValue.toUpperCase());
             } else {
-                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE,"");
+                communicator.viewMessage(MessageType.WRONG_INPUT_VALUE);
                 communicator.viewMessage(MessageType.AVAILABLE_VALUES, Arrays.toString(enumData));
             }
         }
